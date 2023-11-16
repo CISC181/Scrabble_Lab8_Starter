@@ -2,19 +2,33 @@ package pkgCore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pkgHelper.Util;
 
 public class DictionaryLab1Test {
 
+	private static Dictionary d;
+	
+//	@BeforeAll
+//	public static void setUpBeforeClass() throws Exception {
+//		d = new Dictionary();
+//	}
+	
+	@BeforeEach
+	public void setUp() throws Exception {
+		d = new Dictionary();
+	}
+	
 	@Test
 	public void LoadDictionaryTest1() {
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 
 		int iDictionarySize = 79340;
 
-		Dictionary d = new Dictionary();
+		//Dictionary d = new Dictionary();
 		assertEquals(iDictionarySize, d.getWords().size());
 		for (Word w : d.getWords()) {
 			for (Character c : w.getWord().toCharArray()) {
@@ -31,7 +45,7 @@ public class DictionaryLab1Test {
 		// Test to see if all characters are uppercase
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 
-		Dictionary d = new Dictionary();
+		//Dictionary d = new Dictionary();
 		for (Word w : d.getWords()) {
 			for (Character c : w.getWord().toCharArray()) {
 				if (!Character.isUpperCase(c)) {
@@ -48,7 +62,7 @@ public class DictionaryLab1Test {
 		// Test to see if all characters are uppercase
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 
-		Dictionary d = new Dictionary();
+		//Dictionary d = new Dictionary();
 		Word w = d.findWord("TREE");
 		assertNotNull(w);
 
@@ -60,7 +74,7 @@ public class DictionaryLab1Test {
 		// Test to see if all characters are uppercase
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 
-		Dictionary d = new Dictionary();
+		//Dictionary d = new Dictionary();
 		Word w = d.findWord("tree");
 		assertNotNull(w);
 
@@ -72,7 +86,7 @@ public class DictionaryLab1Test {
 		// Test to see if all characters are uppercase
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 
-		Dictionary d = new Dictionary();
+		//Dictionary d = new Dictionary();
 		Word w = d.findWord("TREEX");
 		assertNull(w);
 
@@ -122,7 +136,7 @@ public class DictionaryLab1Test {
 	{
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 		Word w1 = new Word("ABC");
-		Word w2 = new Word("ABC");
+		Word w2 = new Word("abc");
 		assertTrue(w1.compareTo(w2) == 0);
 		Util.PrintEnd(new Throwable().getStackTrace()[0].getMethodName());	
 	}	
